@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">NeTelega</string>
+    <string name="login_field_hint">Phone number</string>
+    <string name="password_field_hint">Password</string>
+    <string name="sign_in_button_text">Sign In</string>
+    <string name="wrong_log_pass_message">Wrong login or password</string>
+    <string name="register_button_text">Register</string>
+    <string name="repeat_password_field_hint">Repeat password</string>
+    <string name="empty_field_msg">Can\'t be empty</string>
+    <string name="short_password_msg">Too short password</string>
+    <string name="passwords_do_not_match">Passwords don\'t match</string>
+    <string name="name_field_hint">Name</string>
+    <string name="surname_field_hint">Surname</string>
+    <string name="loading_error_msg">Loading error</string>
+    <string name="incorrect_data_error_msg">Wrong data</string>
+    <string name="server_error_msg">Server error</string>
+    <string name="success_account_creation_msg">Account successfully created</string>
+</resources>

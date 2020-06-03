@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NeTelega</string>
+    <string name="login_field_hint">Телефон</string>
+    <string name="password_field_hint">Пароль</string>
+    <string name="sign_in_button_text">Войти</string>
+    <string name="wrong_log_pass_message">Неверный логин или пароль</string>
+    <string name="register_button_text">Регистрация</string>
+    <string name="repeat_password_field_hint">Повторите пароль</string>
+    <string name="empty_field_msg">Поле не может быть пустым</string>
+    <string name="short_password_msg">Короткий пароль</string>
+    <string name="passwords_do_not_match">Пароли не совпадают</string>
+    <string name="name_field_hint">Имя</string>
+    <string name="surname_field_hint">Фамилия</string>
+    <string name="loading_error_msg">Ошибка загрузки</string>
+    <string name="incorrect_data_error_msg">Некорректные данные</string>
+    <string name="server_error_msg">"Ошибка сервера "</string>
+</resources>

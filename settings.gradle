@@ -1,0 +1,3 @@
+include ':ServerSDK'
+rootProject.name='NeTelega'
+include ':app'
