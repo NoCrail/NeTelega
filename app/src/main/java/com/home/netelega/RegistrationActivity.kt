@@ -1,6 +1,7 @@
 package com.home.netelega
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -20,11 +21,13 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class RegistrationActivity : AppCompatActivity() {
+    private lateinit var pref: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
 
         initEditFields()
+        pref = getSharedPreferences(USER_SHARED_PREFERENCES, MODE_PRIVATE)
 
         register_user_btn.setOnClickListener {
             if (!isDataCorrect()) {
@@ -35,6 +38,9 @@ class RegistrationActivity : AppCompatActivity() {
             GlobalScope.launch(Dispatchers.IO) {
             val res = registerUser(collectUserData())
             if (res is Result.Success) {
+                val token = res.value.split("&")[0].split("=")[1]
+                val id = res.value.split("&")[1].split("=")[1]
+                pref.edit().putString(USER_ID_PREFERENCES, id).putString(USER_TOKEN_PREFERENCES, token).apply()
                 withContext(Dispatchers.Main){
                     Toast.makeText(
                         baseContext,
@@ -107,10 +113,12 @@ class RegistrationActivity : AppCompatActivity() {
         val surname = surname_edit_text.text.toString()
         val password = password_edit_text.text.toString()
         val phone = login_edit_text.text.toString()
-        return Account(name, surname, password, phone)
+        return Account(phone, password, name, surname)
     }
 
     private fun registerUser(acc: Account): Result<String> {
         return UserService.register(acc)
+
+
     }
 }

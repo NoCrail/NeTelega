@@ -15,4 +15,5 @@
     <string name="incorrect_data_error_msg">Wrong data</string>
     <string name="server_error_msg">Server error</string>
     <string name="success_account_creation_msg">Account successfully created</string>
+    <string name="seccess_user_login_msg">Successfully logged in</string>
 </resources>

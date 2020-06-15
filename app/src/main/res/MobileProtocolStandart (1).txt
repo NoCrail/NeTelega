@@ -1,0 +1,81 @@
+APP_TOEKN: "98F1EJJDa4fjwD2fUIHWUd2dsaAsS289IFFFadde3A8213HFI7"
+
+Encoding: UTF8;
+Serialization algorithm: JVM default
+
+
+Every client request should follow string form: application_token?method_name?arg1=value1&arg2=value2&...&arg_n=value_n
+
+for example:
+ 98F1EJJDa4fjwD2fUIHWUd2dsaAsS289IFFFadde3A8213HFI7 ? register ? user = DIMA & surname = CHERKASOV & password = 1234556 & phone_number = 17102382113
+
+for simplify you code< you can use spaces and \n in request line, server always trim it.
+
+Then server will send you response "arg1=value1&arg2=value2&...&arg_n=value_n" if operation was successful, and error code "error=number_code <reason>" 
+
+If you got a successful response, than your app should send back that you've got responce and handle it (send string "OK")
+
+In other case server will rollback or not commit operation.
+
+Method Docs:
+
+1) Register:
+
+client:
+
+"app_token ? register ? name = {} & surname = {} & password = {} & phone_num = {}"
+
+server: 
+
+OK: "user_token={}&user_id={}" 
+ERROR: "error={code} user exists", code: 100 - user already exists
+
+client: 
+"OK" - that he s got response
+
+2) LogIn
+
+client: 
+
+"app_token ? login ? phone_num = {} & password = {}"
+
+server: 
+
+OK: "user_token={}&user_id={}"
+ERROR: "error={code}", code: 201 - wrong login/password
+
+client: 
+"OK" - that he s got response
+
+3)Get Dialogs
+
+client:
+
+"app_token ? getDialogs ? user_token={}"
+
+server:
+
+OK: "dialogs=[{}]" example: "dialogs=[{user_id=0,name='ivan',surname='petrov'},{user_id=1,name='neivan',surname='nepetrov'}]"
+ERROR: "error={code}", code: 301 - wrong user_token
+
+4) Send Message
+
+client: 
+
+"app_token ? sendMsg ? user_token={} ? target_user_id={} ? msg={}"
+
+server:
+
+OK: "OK"
+ERROR: "error={code}", code: 401 - wrong user_token, 402 - wrong target_id
+
+5) Get some messages
+
+client: 
+
+"app_token ? getDialogMessages ? user_token={} ? target_user_id={} ? count={}" 
+
+server: 
+
+OK: "dialog=[{sender_id={}, msg={} }]"  example: "dialog=[{sender_id=0,msg='kto prochel tot osel'},{sender_id=1,msg='aga'}]" order: from old to new
+ERROR: "error={code}", code: 501 - wrong user_token, 502 - wrong target_id
