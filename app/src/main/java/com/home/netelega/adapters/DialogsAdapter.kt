@@ -1,14 +1,14 @@
-package com.home.netelega
+package com.home.netelega.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.home.netelega.R
 import com.home.netelega.structures.Dialog
 
-class Adapter(private val dialogs: List<Dialog>, private val actionClicker: ActionClick): RecyclerView.Adapter<Adapter.DialogViewHolder>() {
+class DialogsAdapter(private val dialogs: List<Dialog>, private val actionClicker: ActionClick): RecyclerView.Adapter<DialogsAdapter.DialogViewHolder>() {
     inner class DialogViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val dialogName: TextView = view.findViewById(R.id.contact_name_tv)
     }

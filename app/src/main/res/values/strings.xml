@@ -16,4 +16,5 @@
     <string name="server_error_msg">Server error</string>
     <string name="success_account_creation_msg">Account successfully created</string>
     <string name="seccess_user_login_msg">Successfully logged in</string>
+    <string name="send_button_label">Send</string>
 </resources>
